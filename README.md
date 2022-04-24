@@ -2,5 +2,5 @@
 
 Simple drag and drop spelling game built using HTML, CSS, and JavaScipt. Hopefully my 3 year old likes it :) 
 
-https://user-images.githubusercontent.com/57625094/159921974-a7009a0f-5ec1-43aa-be29-ccbaf1bd6f32.mov
 
+![april-24](https://user-images.githubusercontent.com/57625094/164959573-4682661b-1c43-4b77-b73c-3e223f507874.gif)
