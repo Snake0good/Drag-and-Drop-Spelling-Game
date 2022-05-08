@@ -484,10 +484,17 @@ playerProfilePicBtn.addEventListener('click', () => {
 })
 
 function openPlayerProfile() {
-  playerProfileDiv.style.width = '500px';
-  playerProfileDiv.style.padding = '25px'
-  backgroundFade.classList.toggle('background-fade')
+  if (window.innerWidth < 600) {
+    playerProfileDiv.style.width = '100%';
+    playerProfileDiv.style.padding = '10px'
+    backgroundFade.classList.toggle('background-fade')
+  } else {
+    playerProfileDiv.style.width = '500px';
+    playerProfileDiv.style.padding = '25px'
+    backgroundFade.classList.toggle('background-fade')
+  }
 }
+
 
 // close the player profile div
 closePlayProBtn.addEventListener('click', () => {
