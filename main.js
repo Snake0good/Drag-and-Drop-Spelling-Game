@@ -47,7 +47,7 @@ const threeLetterWords = [
     l1: 'V',
     l2: 'A',
     l3: 'N',
-    pic: 'images/van.jpg'
+    pic: 'images/van.png'
   },
   {
     word: 'RUB',
@@ -61,7 +61,7 @@ const threeLetterWords = [
     l1: 'Z',
     l2: 'I',
     l3: 'P',
-    pic: 'images/zip.jpg'
+    pic: 'images/zip.png'
   },
   {
     word: 'RUN',
@@ -84,20 +84,20 @@ const threeLetterWords = [
     l3: 'N',
     pic: 'images/man.png'
   },
-  {
-    word: 'HIS',
-    l1: 'H',
-    l2: 'I',
-    l3: 'S',
-    pic: 'images/his.jpg'
-  },
-  {
-    word: 'HER',
-    l1: 'H',
-    l2: 'E',
-    l3: 'R',
-    pic: 'images/her.jpg'
-  },
+  // {
+  //   word: 'HIS',
+  //   l1: 'H',
+  //   l2: 'I',
+  //   l3: 'S',
+  //   pic: 'images/his.jpg'
+  // },
+  // {
+  //   word: 'HER',
+  //   l1: 'H',
+  //   l2: 'E',
+  //   l3: 'R',
+  //   pic: 'images/her.jpg'
+  // },
   {
     word: 'YOU',
     l1: 'Y',
@@ -105,13 +105,87 @@ const threeLetterWords = [
     l3: 'U',
     pic: 'images/you.png'
   },
+  {
+    word: 'BEE',
+    l1: 'B',
+    l2: 'E',
+    l3: 'E',
+    pic: 'images/bee.png'
+  },
+  {
+    word: 'BAT',
+    l1: 'B',
+    l2: 'A',
+    l3: 'T',
+    pic: 'images/bat.png'
+  },
+  {
+    word: 'COW',
+    l1: 'C',
+    l2: 'O',
+    l3: 'W',
+    pic: 'images/cow.png'
+  },
+  {
+    word: 'AGE',
+    l1: 'A',
+    l2: 'G',
+    l3: 'E',
+    pic: 'images/age.png'
+  },
+  {
+    word: 'EAR',
+    l1: 'E',
+    l2: 'A',
+    l3: 'R',
+    pic: 'images/ear.png'
+  },
+  {
+    word: 'JOY',
+    l1: 'J',
+    l2: 'O',
+    l3: 'Y',
+    pic: 'images/joy.png'
+  },
+  {
+    word: 'GEM',
+    l1: 'G',
+    l2: 'E',
+    l3: 'M',
+    pic: 'images/gem.png'
+  }
 ]
 
 
+// store the avatar and name
+let currentUser = {
+  name: "user",
+  avatarSRC: "avatars/blank.png",
+  score: 0, 
+  stars: 0,
+  superStars: 0
+}
 
+//! ===== Introduction Page Follow the Cursor ==== //
+let buzzingBee = document.querySelector('#flying-bee')
 
+const moveBuzzingBee = (e) => {
+  buzzingBee.style.left = (e.pageX) + 'px';
+  buzzingBee.style.top = (e.pageY - 110) + 'px';
+}
 
+document.addEventListener('mousemove', moveBuzzingBee)
 
+const introductionPage = document.querySelector('#introduction-page')
+
+document.querySelector('#intro-page-btn').addEventListener('click', () => {
+  // move to next page (the name page)
+  introductionPage.style.display = 'none'
+  avatarSelectionPage.style.display = 'none';
+  enterNamePage.style.display = 'flex';
+  instructionsPage.style.display = 'none';
+  gamePlayPage.style.display = 'none';
+})
 
 
 //! ======= Name Page Elements and Handling ====== //
@@ -152,6 +226,8 @@ function openAvatarSelectionPage() {
   enterNamePage.style.display = 'none';
   instructionsPage.style.display = 'none';
   gamePlayPage.style.display = 'none';
+  console.log('clicked small player pic next button', document.querySelector('#small-player-pic'))
+  document.querySelector('#small-player-pic').style.display = 'inline';
 }
 
 // go back to the Name page
@@ -178,14 +254,10 @@ const userAvatarPicuter = document.querySelector("#user-avatar")
 // next button on Avatar Page 
 const nextButtonAvatarPage = document.querySelector("#avatar-next");
 
-// store the avatar and name
-let currentUser = {
-  name: "user",
-  avatarSRC: "avatars/blank.png",
-  score: 0
-}
 
-//? ===== AVATARS ====== //
+
+
+//! ===== AVATARS ====== //
 // selecting user avatars
 let userAvatar = document.querySelector('#user-avatar');
 let avatarSelection = document.getElementsByName('avatar')
@@ -249,9 +321,6 @@ closeDirectionsBtn.addEventListener('click', () => {
 
 
 //! =========== Player Profile Handling ============= //
-// TODO 
-// 5. update words spelled correctly (missing the first one)
-
 const playerProfilePicBtn = document.querySelector('#small-player-pic')
 const playerProfileDiv = document.querySelector('#player-profile')
 const closePlayProBtn = document.querySelector('#closePPBtn')
@@ -286,28 +355,48 @@ function closePlayerProfile() {
 let updateSaveBtn = document.querySelector('#about-me-btn')
 
 updateSaveBtn.addEventListener('click', () => { 
+  // grab the current about me and name
   let currentAboutMe = document.querySelector('#aboutMe').innerText
-  
+  let currentName = document.querySelector('.profile-name').innerText
+
   if (updateSaveBtn.innerText === 'Update') {
     // clear out the old aboutMe
     document.querySelector('#aboutMe').innerText = ''
+    // clear old name
+    document.querySelector('.profile-name').innerText = ''
   
-    let textBoxInput = document.createElement('textarea')
-    // textBoxInput.setAttribute('type', 'textarea')
-    textBoxInput.classList.add('about-me-textbox')
-    textBoxInput.value = currentAboutMe;
-    document.querySelector('#about-me-div').appendChild(textBoxInput)
+    // create new elements to type New Names and about me
+    let aboutMeInput = document.createElement('textarea');
+    let newNameInput = document.createElement('input');
+
+    // update the classLists and populate with old values
+    newNameInput.classList.add('new-name-textbox');
+    newNameInput.value = currentName;
+    document.querySelector('.profile-name').appendChild(newNameInput)
+
+    aboutMeInput.classList.add('about-me-textbox')
+    aboutMeInput.value = currentAboutMe;
+    document.querySelector('#about-me-div').appendChild(aboutMeInput)
 
     // change the text of the button
     updateSaveBtn.innerText = 'Save'
   } else if (updateSaveBtn.innerText === 'Save') {
    // now save the info that the user just populated
+   // the name
+   console.log(document.querySelector('.new-name-textbox'))
+   console.log(document.querySelector('.about-me-textbox'))
+
+   document.querySelector('.profile-name').innerText = document.querySelector('.new-name-textbox').value;
+  //  document.querySelector('.new-name-textbox').remove();
+   
+   // the about me
     document.querySelector('#aboutMe').innerText = document.querySelector('.about-me-textbox').value
     document.querySelector('.about-me-textbox').remove()
+    
+    // change save button name
     updateSaveBtn.innerText = 'Update'
   }
 })
-
 
 // update the Profile Picture from the Profile sideview
 document.querySelector('#medium-player-pic').addEventListener('click', () => {
@@ -318,16 +407,10 @@ document.querySelector('#medium-player-pic').addEventListener('click', () => {
 
 
 
-// .addEventListener('click', function() {
-//   console.log('hello');
-//   document.querySelector(".instructions").style.display = "none"
-//   document.querySelector("#animated-cat").style.display = "flex"
-// })
 
 
 //! ======== Game Handling ========== //
 // on the click of Next Word get a new word
-
 // next word btn
 const nextWordBtn = document.querySelector('#next-word');
 
@@ -355,10 +438,6 @@ let getNewWord = () => {
   currentWord = ''
   // store the chosen word in the current word
   currentWord = wordObj.word
-  console.log(wordObj.word)
-  console.log(wordObj.l1)
-  console.log(wordObj.l2)
-  console.log(wordObj.l3)
 
   // replace the correct letters with the NEW WORD letters
   firstCorrectLetter.innerText = wordObj.l1;
@@ -381,7 +460,7 @@ let getNewWord = () => {
 }
 
 
-let resetMovableLetters = () => {
+const resetMovableLetters = () => {
   // remove all the correct and incorrect backgrounds
   firstCorrectLetter.classList.remove('incorrect-bg');
   firstCorrectLetter.classList.remove('correct-bg');
@@ -407,8 +486,7 @@ nextWordBtn.addEventListener('click', () => {
 
 
 
-////! THIS DOES NOT WORK BELOW!!!! FIX IT!!!
-////! THIS DOES NOT WORK BELOW!!!! FIX IT!!!
+
 // move the letters back to the original position
 let resetLetters = () => {
   let winWidth = window.innerWidth/2;
@@ -417,6 +495,13 @@ let resetLetters = () => {
   firstStartLetter.style.transform = `translate(0px, 0px)`
   secondStartLetter.style.transform = `translate(0px, 0px)`
   thirdStartLetter.style.transform = `translate(0px, 0px)`
+
+  firstStartLetter.setAttribute('data-x', 0)
+  firstStartLetter.setAttribute('data-y', 0)
+  secondStartLetter.setAttribute('data-x', 0)
+  secondStartLetter.setAttribute('data-y', 0)
+  thirdStartLetter.setAttribute('data-x', 0)
+  thirdStartLetter.setAttribute('data-y', 0)
 }
 
 
@@ -433,16 +518,16 @@ function checkWinner() {
         initConfetti();
         // play winner's sound
         winSound.play()
-
-      
+ 
         congratsPage.classList.remove('invisible')
         congratsPage.classList.add('visible')
-        // add a point to the current user's score
+
+        // add a point to the current user's score and start count
         currentUser.score++
+        currentUser.stars++
 
         // update score on congrats page
         document.querySelector("#correct").innerText = currentUser.score
-
 
         ////! Profile section updates
         // update the score in the profile section
@@ -450,16 +535,27 @@ function checkWinner() {
         
         document.querySelector('#stars-ul').innerHTML = ''
 
-        // update filled stars...
-        for (i=1; i<=currentUser.score; i++) {
-          console.log('new star')
-          let starLi = document.createElement('li')
-          starLi.innerHTML = `<i class="fas fa-star"></i>`
-          document.querySelector('#stars-ul').appendChild(starLi)
+        // update filled stars
+        for (i=1; i<=currentUser.stars; i++) {
+          if(currentUser.stars >= 10){
+            currentUser.stars = 0
+            // set stars to 0 and then add a superStar
+            currentUser.superStars++
+            // now create a SUPER STAR on the page
+            let superStarLi = document.createElement('li')
+            superStarLi.innerHTML = `<i class="fas fa-trophy"></i>`
+            document.querySelector('#super-stars-ul').appendChild(superStarLi)
+
+          } else {
+            console.log('new star')
+            let starLi = document.createElement('li')
+            starLi.innerHTML = `<i class="fas fa-star"></i>`
+            document.querySelector('#stars-ul').appendChild(starLi)
+          }
         }
 
         // update unfilled stars
-        let blankStarCount = 10 - currentUser.score
+        let blankStarCount = 10 - currentUser.stars
         
         for (i=1; i<=blankStarCount; i++) {
           console.log('new blank star')
@@ -468,23 +564,18 @@ function checkWinner() {
           document.querySelector('#stars-ul').append(blankStar)
         }
 
-        // check all learned words for the Current word being spelled. 
-        allLearnedWords.push(currentWord)
+        console.log('all learned words', allLearnedWords)
+        console.log('current word ', currentWord)
 
 
-        for (let i=0; i<allLearnedWords.length; i++) {
-          console.log('all learned words', allLearnedWords)
-          console.log('current woord ', currentWord)
-
-          if (allLearnedWords[i] !== currentWord || allLearnedWords.length === 1) {
-            let li = document.createElement('li')
-            console.log('inside if - ', currentWord)
-            li.innerText = currentWord/// what's the word?
-            document.querySelector('#word-list').appendChild(li)
-          } else {
-            allLearnedWords.pop()
-            // console.log('allLW', allLearnedWords)
-          }
+        if (allLearnedWords.includes(currentWord)) {
+          console.log('All Learned Words: ', allLearnedWords)
+        } else {
+          // check all learned words for the Current word being spelled. 
+          allLearnedWords.push(currentWord)
+          let li = document.createElement('li')
+          li.innerText = currentWord/// what's the word?
+          document.querySelector('#word-list').appendChild(li)
         }
   }
 }
@@ -518,9 +609,11 @@ interact('.draggable')
 // set a defaul value for drag start position
 
 // clear the attributes to reset the x and y coordinates
-function endedDrag (event) {
-  event.target.setAttribute('data-x', 0)
-  event.target.setAttribute('data-y', 0) 
+function endedDrag (event) {   
+  console.log(event.target)     
+  // event.target.setAttribute('data-x', 0)
+  // event.target.setAttribute('data-y', 0) 
+  // console.log(event.target)
 }
 
 
@@ -728,9 +821,6 @@ render = () => {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
   });
 
-  // Fire off another round of confetti
-  // if (confetti.length <= 10) initConfetti();
-
   window.requestAnimationFrame(render);
 };
 
@@ -738,21 +828,7 @@ render = () => {
 // renders the confetti
 render();
 
-// starts the confetti
-// initConfetti();
-
-
-
 //----------Resize----------
 window.addEventListener('resize', function () {
   resizeCanvas();
 });
-
-// //------------Click------------
-// window.addEventListener('click', function () {
-//   initConfetti();
-// });
-
-
-
-
