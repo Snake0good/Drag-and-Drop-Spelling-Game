@@ -39,6 +39,33 @@ body {
 }
 
 
+/* ==========  the introduction page ========== */
+#introduction-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#intro-page-btn {
+    width: 150px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+#introduction-page h1 {
+    font-size: 3.5rem;
+}
+
+#flying-bee {
+    width: 200px;
+    position: absolute;
+    top: 15%;
+    -webkit-animation: wiggle 1s infinite;
+}
+
+
+
 
 /* ========  Name Page ======== */
 #name-page {
@@ -194,67 +221,7 @@ body {
 
 
 
-/* #drag-1, #drag-2, #drag-3 {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 6.5em;
-    margin: 1rem 0 0 1rem;
-    background-color: rgb(169, 77, 108);
-    color: white;
-    border-radius: 0.75em;
-    touch-action: none;
-    user-select: none;
-    transform: translate(0px, 0px);
-    position: absolute;
-} */
-
-/* #drag-1 {
-    margin-left: 500px;
-}
-#drag-2 {
-    margin-left: 400px;
-}
-#drag-3 {
-    margin-left: 300px;
-} */
-
-
-
-/* 
-.dropzone_me {
-    width: 60px;
-    height: 60px;
-    background-color: rgb(254, 152, 186);
-    border-radius: 15px;
-    position: absolute;
-    bottom: 50px;
-    border: 4px dashed transparent;
-    transition: background-color 0.3s;
-}
-
-#first-dropzone_me {
-    margin-left: 150px;
-}
-#second-dropzone_me {
-    margin-left: 240px;
-}
-#third-dropzone_me {
-    margin-left: 330px;
-} */
-
-
-
-
-/* #outer-dropzone {
-    height: 140px;
-}
-
-#inner-dropzone {
-height: 80px;
-} */
+ /* ======== the game page ========= */
 #game-page {
     display: flex;
     flex-direction: column;
@@ -433,13 +400,17 @@ background-color: #90be6d;
     display: block;
     flex-direction: column;
     z-index: 10;
-    background-color: rgb(218, 67, 238);
+    background-color: rgb(235, 116, 251);
     height: 100vh;
-    transition: 0.4s all linear;;
+    transition: 0.1s all linear;;
 
     /* change this back */
     width: 0;
     overflow: hidden;
+}
+
+.profile-name {
+    font-size: 1.5rem;
 }
 
 #closePPBtn {
@@ -458,6 +429,7 @@ background-color: #90be6d;
 }
 
 #small-player-pic {
+    display: relative;
     position: fixed;
     width: 75px;
     top: 1rem;
@@ -480,13 +452,24 @@ background-color: #90be6d;
     cursor: pointer;
 }
 
-#stars-ul {
+#stars-ul, #super-stars-ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
+}
+
+#stars-ul {
     font-size: 1.5rem;
     color: gold;
+}
+
+#super-stars-ul {
+    font-size: 3rem;
+    color: #4361ee;
+}
+#super-stars-ul li {
+    margin-right: 0.2rem;
 }
 
 #word-list {
@@ -501,6 +484,16 @@ background-color: #90be6d;
     padding-left: 10px;
 }
 
+/* this is added on profile update */
+.new-name-textbox {
+    width: 70%;
+    height: fit-content;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
 .about-me-textbox {
     width: 100%;
     height: calc(1em * 1.5 * 6);
@@ -508,6 +501,7 @@ background-color: #90be6d;
     outline: none;
     border: none;
     font-size: 1.2rem;
+    border-radius: 5px;
 }
 
 #about-me-div>div {
@@ -523,6 +517,7 @@ background-color: #90be6d;
     height: 25px;
     border-radius: 15px;
     transition: 0.2s all;
+    cursor: pointer;
 } 
 #about-me-btn:hover {
     color: white;
@@ -539,7 +534,7 @@ background-color: #90be6d;
 #game-page
 #instructions */
 
-#avatar-page, .congrats-page, #instructions, #game-page {
+#avatar-page, .congrats-page, #instructions, #game-page, #name-page, #small-player-pic {
     display: none;
 }
 
