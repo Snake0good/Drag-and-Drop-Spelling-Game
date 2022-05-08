@@ -54,7 +54,7 @@ body {
 }
 
 #introduction-page h1 {
-    font-size: 3.5rem;
+    font-size: 5.5rem;
 }
 
 #flying-bee {
@@ -62,6 +62,10 @@ body {
     position: absolute;
     top: 15%;
     -webkit-animation: wiggle 1s infinite;
+}
+.flying-bee {
+    width: 35px;
+    position: absolute;
 }
 
 
