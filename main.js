@@ -84,20 +84,20 @@ const threeLetterWords = [
     l3: 'N',
     pic: 'images/man.png'
   },
-  // {
-  //   word: 'HIS',
-  //   l1: 'H',
-  //   l2: 'I',
-  //   l3: 'S',
-  //   pic: 'images/his.jpg'
-  // },
-  // {
-  //   word: 'HER',
-  //   l1: 'H',
-  //   l2: 'E',
-  //   l3: 'R',
-  //   pic: 'images/her.jpg'
-  // },
+  {
+    word: 'HIS',
+    l1: 'H',
+    l2: 'I',
+    l3: 'S',
+    pic: 'images/his.png'
+  },
+  {
+    word: 'HER',
+    l1: 'H',
+    l2: 'E',
+    l3: 'R',
+    pic: 'images/her.png'
+  },
   {
     word: 'YOU',
     l1: 'Y',
