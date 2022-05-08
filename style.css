@@ -575,3 +575,21 @@ background-color: #90be6d;
     /* border: 1px solid #ddd; */
     /* user-select: none; */
  }
+
+
+ 
+ /* basic media queries */
+ @media screen and (max-width: 600px) {
+     #introduction-page {
+         text-align: center;
+     }
+
+     #game-page svg {
+         display: none;
+     }
+
+     .drop-area-div {
+         margin-top: 25%;
+     }
+
+ }
