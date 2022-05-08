@@ -27,6 +27,13 @@
     <!-- This is the Confetti  -->
     <canvas class="confetti" id="canvas"></canvas>
 
+    <!-- this introduction page -->
+    <div id="introduction-page">
+        <h1 id="intro-name">Spelling Bee</h1>
+        <img id="flying-bee" src="images/bee.png" />
+        <button id="intro-page-btn" class="btn">Let's Play!</button>
+    </div>
+
     <!--  This is the game page  -->
     <div id="game-page">
         <div class="drop-area-div">
@@ -117,7 +124,7 @@
         </div>
         
         <div class="picture-div">
-            <img id="animated-pic" src="word-pics/cat.png" />
+            <img id="animated-pic" src="images/cat.png" />
         </div>
 
 
@@ -125,8 +132,8 @@
 
  
     </div>
-    <!--  This is the game page  -->
 
+    <!-- This is the name page -->
     <div id="name-page">
         <svg width="250" height="250" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px; height: 150px;">
             <style>
@@ -163,6 +170,7 @@
         <button id="name-next" class="btn">Next</button>
     </div>
 
+    <!-- the avatar selection page -->
     <div id="avatar-page">
         <div id="user-profile-select">
             <h1><span id="user-name">user-name</span></h1>
@@ -237,7 +245,7 @@
 
     </div>
 
-
+    <!-- the intrustions page -->
     <div id="instructions" class="instructions">
         <div class="instruction-header">
             <h2>Directions:</h2>
@@ -254,8 +262,11 @@
             <div>
                 <h2 id="closePPBtn">&times;</h2>
                 <img id="medium-player-pic" src="avatars/blank.png" alt="player-profile-pic" />
-                <h3 class="profile-name">Name:</h3>
+                <h3 id="profile-name-title">Name: <span class="profile-name"></span></h3>
                 <h3>Total Words: <span class="total-words">0</span></h3>
+                <ul id="super-stars-ul">
+
+                </ul>
                 <ul id="stars-ul">
                 </ul>
                 <h3>Words Spelled Correctly: </h3>
@@ -266,7 +277,7 @@
                         <h3>Things About Me: </h3>
                         <button id="about-me-btn">Update</button>
                     </div>
-                    <p id="aboutMe"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi laudantium, non, praesentium tempora libero at consequuntur neque ut dolorem eveniet quaerat iure repellendus voluptatibus adipisci eaque nostrum natus nesciunt nulla.</p>
+                    <p id="aboutMe"> I am a great speller and a wonderful person. I have worked hard to learn words. Look at all the words above for what I've already accomplished! I'm going to do even more tomorrow!</p>
                 </div>
             </div>
          </div>
