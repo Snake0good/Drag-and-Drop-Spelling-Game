@@ -159,8 +159,9 @@ const threeLetterWords = [
 
 // store the avatar and name
 let currentUser = {
-  name: "user",
+  name: "",
   avatarSRC: "avatars/blank.png",
+  aboutMe: `I am a great speller and a wonderful person. I have worked hard to learn words. Look at all the words above for what I've already accomplished! I'm going to do even more tomorrow!`,
   score: 0, 
   stars: 0,
   superStars: 0
@@ -213,7 +214,10 @@ storeUserBtn.addEventListener('click', () => {
 
 // open the avatar selection page
 function openAvatarSelectionPage() {
-  currentUser.name = userNameInput.value;
+
+  if (currentUser.name === '') {
+    currentUser.name = userNameInput.value;
+  }
 
   // show the User Name on the Avatar page
   showUserNameAvatar.innerText = currentUser.name;
@@ -280,7 +284,7 @@ chooseAvatar();
 // save the name and picture on the NEXT button click
 nextButtonAvatarPage.addEventListener('click', () => {
   // store name and avatar pic
-  currentUser.name = showUserNameAvatar.innerText;
+  showUserNameAvatar.innerText = currentUser.name;
   //console.log('currentUserName ' + currentUser.name);
   currentUser.avatarSRC = userAvatar.src
   //console.log('avatarSRC ' + currentUser.avatarSRC);
@@ -357,7 +361,6 @@ let updateSaveBtn = document.querySelector('#about-me-btn')
 updateSaveBtn.addEventListener('click', () => { 
   // grab the current about me and name
   let currentAboutMe = document.querySelector('#aboutMe').innerText
-  let currentName = document.querySelector('.profile-name').innerText
 
   if (updateSaveBtn.innerText === 'Update') {
     // clear out the old aboutMe
@@ -371,7 +374,7 @@ updateSaveBtn.addEventListener('click', () => {
 
     // update the classLists and populate with old values
     newNameInput.classList.add('new-name-textbox');
-    newNameInput.value = currentName;
+    newNameInput.value = currentUser.name;
     document.querySelector('.profile-name').appendChild(newNameInput)
 
     aboutMeInput.classList.add('about-me-textbox')
@@ -386,11 +389,14 @@ updateSaveBtn.addEventListener('click', () => {
    console.log(document.querySelector('.new-name-textbox'))
    console.log(document.querySelector('.about-me-textbox'))
 
-   document.querySelector('.profile-name').innerText = document.querySelector('.new-name-textbox').value;
+   currentUser.name = document.querySelector('.new-name-textbox').value
+   console.log('current user name: ', currentUser.name)
+   document.querySelector('.profile-name').innerText = currentUser.name
   //  document.querySelector('.new-name-textbox').remove();
    
    // the about me
-    document.querySelector('#aboutMe').innerText = document.querySelector('.about-me-textbox').value
+    currentUser.aboutMe = document.querySelector('.about-me-textbox').value
+    document.querySelector('#aboutMe').innerText = currentUser.aboutMe
     document.querySelector('.about-me-textbox').remove()
     
     // change save button name
